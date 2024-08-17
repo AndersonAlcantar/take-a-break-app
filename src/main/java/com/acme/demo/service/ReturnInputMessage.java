@@ -6,6 +6,7 @@ import com.acme.demo.entity.Customers;
 import com.acme.demo.events.LogsEvent;
 import com.acme.demo.repository.CustomersRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Service;
 public class ReturnInputMessage implements ExceptionMessage {
     private final ApplicationEventPublisher applicationEventPublisher;
     private final CustomersRepository customersRepository;
+    @Value("${spring.datasource.password}")
+    public String dbName;
 
     public ReturnInputMessage(ApplicationEventPublisher applicationEventPublisher,
                               CustomersRepository customersRepository) {
@@ -25,6 +28,7 @@ public class ReturnInputMessage implements ExceptionMessage {
     }
 
     public String printLog(String message) {
+        log.info("----------PASSWORD----------={}", dbName);
         LogsEvent logsEvent = new LogsEvent(this, message);
         applicationEventPublisher.publishEvent(logsEvent);
         return message;
