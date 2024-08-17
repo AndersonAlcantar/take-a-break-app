@@ -20,6 +20,8 @@ public class ReturnInputMessage implements ExceptionMessage {
     private final CustomersRepository customersRepository;
     @Value("${DB_PASSWORD}")
     public String dbName;
+    @Value("DB_PORT")
+    public int dbPort;
 
     public ReturnInputMessage(ApplicationEventPublisher applicationEventPublisher,
                               CustomersRepository customersRepository) {
@@ -30,6 +32,7 @@ public class ReturnInputMessage implements ExceptionMessage {
     public String printLog(String message) {
         log.info("----------PASSWORD----------");
         log.info("password={}", dbName);
+        log.info("port={}", dbPort);
         LogsEvent logsEvent = new LogsEvent(this, message);
         applicationEventPublisher.publishEvent(logsEvent);
         return message;
