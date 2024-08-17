@@ -1,2 +1,2 @@
 # take-a-break-app
-Discovery web application
+Discovery web application.
