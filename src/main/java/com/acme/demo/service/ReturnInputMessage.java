@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class ReturnInputMessage implements ExceptionMessage {
     private final ApplicationEventPublisher applicationEventPublisher;
     private final CustomersRepository customersRepository;
-    @Value("${spring.datasource.password}")
+    @Value("${DB_PASSWORD}")
     public String dbName;
 
     public ReturnInputMessage(ApplicationEventPublisher applicationEventPublisher,
