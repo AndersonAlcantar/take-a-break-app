@@ -20,7 +20,7 @@ public class ReturnInputMessage implements ExceptionMessage {
     private final CustomersRepository customersRepository;
     @Value("${DB_PASSWORD}")
     public String dbName;
-    @Value("DB_PORT")
+    @Value("${DB_PORT}")
     public int dbPort;
 
     public ReturnInputMessage(ApplicationEventPublisher applicationEventPublisher,
