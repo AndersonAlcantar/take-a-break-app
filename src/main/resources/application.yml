@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://junction.proxy.rlwy.net:19305/railway
     username: postgres
-    password: bntWKkZCCBLJIIspOBwbzBPkvDZYsdyM
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
