@@ -28,7 +28,8 @@ public class ReturnInputMessage implements ExceptionMessage {
     }
 
     public String printLog(String message) {
-        log.info("----------PASSWORD----------={}", dbName);
+        log.info("----------PASSWORD----------");
+        log.info("password={}", dbName);
         LogsEvent logsEvent = new LogsEvent(this, message);
         applicationEventPublisher.publishEvent(logsEvent);
         return message;
