@@ -1,6 +1,8 @@
 package com.acme.demo.controller;
 
+import com.acme.demo.dto.CustomersBody;
 import com.acme.demo.dto.RequestMessage;
+import com.acme.demo.entity.Customers;
 import com.acme.demo.listener.LogsEventListener;
 import com.acme.demo.service.ReturnInputMessage;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -36,6 +39,16 @@ public class AcmeDemo {
         var response = new HashMap<>();
         response.put("message", returnInputMessage.printLog(requestMessage.getMessage()));
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(value = "/customers")
+    public ResponseEntity<?> getClients() {
+        return returnInputMessage.getCustomerList();
+    }
+
+    @PostMapping(value = "/save-customer")
+    public ResponseEntity<?> saveNewCustomer(@RequestBody CustomersBody customer) {
+        return returnInputMessage.saveNewCustomer(customer);
     }
 }
 
