@@ -50,5 +50,10 @@ public class AcmeDemo {
     public ResponseEntity<?> saveNewCustomer(@RequestBody CustomersBody customer) {
         return returnInputMessage.saveNewCustomer(customer);
     }
+
+    @GetMapping(value = "/env")
+    public ResponseEntity<Map<?, ?>> getEnv() {
+        return ResponseEntity.ok(System.getenv());
+    }
 }
 
